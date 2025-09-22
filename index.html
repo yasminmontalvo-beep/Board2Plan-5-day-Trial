@@ -3,245 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Board2Plan — 5‑Day Trial Marketing Plan</title>
-  <meta name="description" content="Generate a 5‑day trial marketing plan tailored to your business. Exports to Excel in one click." />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <title>Thank you • Board2Plan</title>
+  <meta name="robots" content="noindex, nofollow" />
   <style>
-    :root { --ink:#0f172a; --muted:#64748b; --brand:#0ea5e9; --ring:#bae6fd; }
-    * { box-sizing: border-box; }
-    body { margin:0; background:#f8fafc; color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 28px; }
-    h1 { font-size: 28px; margin: 6px 0 10px; }
-    p.lead { color: var(--muted); margin: 0 0 16px; }
-    .card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; box-shadow:0 2px 8px rgba(2,6,23,.04); }
-    .card-body { padding:18px; }
-    .grid { display:grid; gap:12px; grid-template-columns: 1fr; }
-    @media (min-width: 800px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
-    label { font-size:13px; }
-    .input, select {
-      width:100%; height:42px; padding:0 10px; border:1px solid #cbd5e1; border-radius:10px; font-size:14px; background:#fff; color:var(--ink);
-    }
-    .input:focus, select:focus { outline:none; border-color:var(--brand); box-shadow:0 0 0 3px var(--ring); }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:8px; height:46px; padding:0 18px;
-      border-radius:9999px; border:0; font-weight:700; cursor:pointer; background:var(--brand); color:#fff; font-size:15px;
-    }
-    .footer { margin-top: 22px; padding-top: 14px; border-top: 1px solid #e5e7eb; color: var(--muted); font-size: 12px; text-align:center; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; background:#f8fafc; color:#0f172a; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 28px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:22px; box-shadow:0 2px 8px rgba(2,6,23,.04); }
+    h1 { margin: 0 0 10px; }
+    p.lead { color:#64748b; margin-top: 0; }
+    .btn { display:inline-block; text-decoration:none; padding:12px 16px; border-radius:999px; border:1px solid #0ea5e9; color:#0ea5e9; font-weight:700; }
+    .muted { color:#64748b; font-size:12px; }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
   <div class="wrap">
-    <h1>Board2Plan — 5‑Day Trial Marketing Plan</h1>
-    <p class="lead">Enter the basics and download a tailored <strong>trial</strong> workbook (5 days) to preview the full 30‑day experience.</p>
+    <h1>Thank you for upgrading! 🎉</h1>
+    <p class="lead">Your purchase of the <strong>Board2Plan 30‑Day Marketing Plan</strong> was successful.</p>
 
     <div class="card">
-      <div class="card-body grid grid-2">
-        <div>
-          <label for="brand">Brand</label>
-          <input id="brand" class="input" value="Board2Plan" />
-        </div>
-        <div>
-          <label for="goal">Goal</label>
-          <input id="goal" class="input" value="Lead Generation" />
-        </div>
-        <div>
-          <label for="business">Business Type</label>
-          <select id="business" class="input">
-            <option>General</option>
-            <option>Restaurant / Food</option>
-            <option>Coaching / Consulting</option>
-            <option>Ecommerce / Shop</option>
-            <option>Real Estate</option>
-            <option>SaaS</option>
-            <option>Med Spa</option>
-            <option>Fitness</option>
-            <option>Nonprofit</option>
-            <option>Marketing</option>
-          </select>
-        </div>
-        <div>
-          <label for="file">Output file name</label>
-          <input id="file" class="input" value="5Day_Trial_Marketing_Plan.xlsx" />
-        </div>
-        <div style="display:flex; align-items:end; justify-content:flex-start;">
-          <button id="download" class="btn">⬇️ Generate & Download Excel</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      © <span id="year"></span> Board2Plan • Sheets: 5 Day Plan, Content Matrix (5‑day flow), Keywords & Hashtags, Analytics, Trial Checklist.
+      <h3>Get your 30‑Day workbook</h3>
+      <p>Click below to open your download page. You can set your Brand, Goal, and Business Type before exporting.</p>
+      <p><a class="btn" href="../dl/30day.html">Open 30‑Day Download Page →</a></p>
+      <p class="muted">Tip: bookmark that page to re‑download later.</p>
     </div>
   </div>
-
-  <script>
-    const byId = (id) => document.getElementById(id);
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function generateBusinessTasks(businessType){
-      const lower = (businessType||'General').toLowerCase();
-      const mk = (name,tasks)=>({name,tasks});
-      if(lower.includes('restaurant') || lower.includes('food')){
-        return [ mk('Education',['Recipe tip','Ingredient sourcing spotlight','Nutrition facts explainer','Chef Q&A short']),
-                 mk('Engagement',['Menu poll','Favorite dish question','Review invite','Kitchen BTS story']),
-                 mk('Promotion',['Daily special','Happy hour','Customer testimonial','Event promo']),
-                 mk('Storytelling',['Origin story','Team spotlight','Customer journey','Community involvement']) ];
-      }
-      if(lower.includes('coach') || lower.includes('consult')){
-        return [ mk('Education',['Share a framework','Mini case study','Client Q&A','Common mistake to avoid']),
-                 mk('Engagement',['Poll: biggest challenge','Ask audience goal','DM conversation starter','Weekly live tip']),
-                 mk('Promotion',['Program spotlight','Limited spots left','Testimonial carousel','Book a session CTA']),
-                 mk('Storytelling',['Founder motivation','Client success story','Behind-the-scenes prep','Lesson learned']) ];
-      }
-      if(lower.includes('ecommerce') || lower.includes('shop') || lower.includes('retail')){
-        return [ mk('Education',['Product care tip','Style/usage guide','How it works','Comparison chart']),
-                 mk('Engagement',['Poll: product preference','Ask for reviews','UGC repost','Influencer Q&A']),
-                 mk('Promotion',['Discount promo','Bundle deal','Flash sale','Testimonial with photo']),
-                 mk('Storytelling',['Brand story','Maker spotlight','Behind the packaging','Milestone celebration']) ];
-      }
-      if(lower.includes('real estate')){
-        return [ mk('Education',['Market update (local)','Mortgage 101','Neighborhood guide','Inspection checklist']),
-                 mk('Engagement',['Poll: buy vs rent','Open house Q&A','This-or-that features','DM to get comps']),
-                 mk('Promotion',['New listing','Price improvement','Client testimonial','Under contract / just sold']),
-                 mk('Storytelling',['Agent story','Client journey','Behind the staging','Community highlight']) ];
-      }
-      if(lower.includes('saas')){
-        return [ mk('Education',['Feature tip','Use case walkthrough','Template/how-to','Integrations explainer']),
-                 mk('Engagement',['Poll: workflow pain','Roadmap AMA','Share your stack','Quick win thread']),
-                 mk('Promotion',['Offer spotlight','Free trial push','Customer testimonial','Case study before/after']),
-                 mk('Storytelling',['Founder story','Build in public','User journey','Release milestone']) ];
-      }
-      if(lower.includes('med spa') || lower.includes('medspa') || lower.includes('aesthetic')){
-        return [ mk('Education',['Treatment 101 (e.g., Botox/laser)','Pre-/post-care tips','Safety & credentials','What to expect']),
-                 mk('Engagement',['Poll: treatment goals','Skin concern Q&A','Before/after reaction thread','Myth vs fact']),
-                 mk('Promotion',['New-patient special','Package bundle','Limited slots announcement','Testimonial with consent']),
-                 mk('Storytelling',['Provider spotlight','Client journey (blurred)','Clinic BTS','Community/charity day']) ];
-      }
-      if(lower.includes('fitness') || lower.includes('gym') || lower.includes('trainer')){
-        return [ mk('Education',['Form tip','Beginner workout plan','Macro basics','Recovery routine']),
-                 mk('Engagement',['Challenge sign-up poll','PR shoutouts','Q&A: obstacles','Habit tracker check-in']),
-                 mk('Promotion',['Free trial week','Class pass bundle','Referral perk','Client testimonial video']),
-                 mk('Storytelling',['Coach origin story','Member transformation','Behind the class programming','Event recap']) ];
-      }
-      if(lower.includes('nonprofit') || lower.includes('non-profit') || lower.includes('charity')){
-        return [ mk('Education',['Mission explainer','Problem overview','How donations are used','Volunteer roles']),
-                 mk('Engagement',['Poll: causes people care about','Volunteer spotlight Q&A','AMA with program lead','Community survey']),
-                 mk('Promotion',['Donation drive','Matching gift push','Event registration','Corporate partnership ask']),
-                 mk('Storytelling',['Beneficiary story (consent)','Impact milestone','Behind the mission','Thank-you reel']) ];
-      }
-      if(lower.includes('marketing') || lower.includes('agency')){
-        return [ mk('Education',['Strategy framework','Audit teardown','Channel playbook','Creative hooks pack']),
-                 mk('Engagement',['Poll: biggest bottleneck','Swipe-file share','Caption roast (friendly)','Tool stack AMA']),
-                 mk('Promotion',['Offer spotlight','Free audit CTA','Case study carousel','Limited cohort']),
-                 mk('Storytelling',['Founder POV','Client journey','Behind the shoot','Campaign post-mortem']) ];
-      }
-      return [ mk('Education',['Share an industry tip','How‑to guide','Explain a key term','Repurpose a blog']),
-               mk('Engagement',['Run a poll','Ask a question','Start a DM conversation','Host a Q&A']),
-               mk('Promotion',['Spotlight a product/service','Limited‑time offer','Testimonial','Comparison post']),
-               mk('Storytelling',['Founder story','Behind‑the‑scenes','Customer journey','Milestone']) ];
-    }
-
-    function buildPlanSheet(brand, goal, businessType){
-      const pillars = generateBusinessTasks(businessType);
-      const headerNote = [brand, goal ? `Goal: ${goal}` : null].filter(Boolean).join(' — ');
-      let pillarIdx = 0; const taskIdx = Array(pillars.length).fill(0);
-      const rows = Array.from({length:5},(_,i)=>{
-        const pillar = pillars[pillarIdx];
-        const task = pillar.tasks[taskIdx[pillarIdx] % pillar.tasks.length];
-        taskIdx[pillarIdx]++; pillarIdx = (pillarIdx + 1) % pillars.length;
-        return {
-          Day: i+1,
-          Pillar: pillar.name,
-          'Primary Task': task,
-          'Hook / Angle': '',
-          Channel: '',
-          'Asset Needed': '',
-          CTA: '',
-          Owner: '',
-          Status: 'Not started',
-          Notes: i===0 && headerNote ? headerNote : '',
-        };
-      });
-      const ws = XLSX.utils.json_to_sheet(rows);
-      ws['!cols'] = [
-        { wch: 5 }, { wch: 14 }, { wch: 48 }, { wch: 26 }, { wch: 20 },
-        { wch: 22 }, { wch: 18 }, { wch: 12 }, { wch: 14 }, { wch: 36 },
-      ];
-      return ws;
-    }
-
-    function buildContentMatrixSheet(businessType){
-      const t = (businessType||'General').toLowerCase();
-      const rows = [
-        { Day: 'Day 1 • Awareness', Purpose: 'Reach & educate', Examples: 'Myth busting, 1 tip, intro post' },
-        { Day: 'Day 2 • Engagement', Purpose: 'Spark interaction', Examples: 'Poll, question, AMA prompt' },
-        { Day: 'Day 3 • Proof', Purpose: 'Build trust', Examples: 'Testimonial, before/after, mini case' },
-        { Day: 'Day 4 • Nurture', Purpose: 'Teach & help', Examples: 'How‑to, checklist, quick win' },
-        { Day: 'Day 5 • Conversion', Purpose: 'Drive action', Examples: 'Offer spotlight, FAQ, CTA' },
-      ];
-      if(t.includes('restaurant')) rows[0].Examples = 'House specialty myth, chef tip, intro to the concept';
-      if(t.includes('coach')) rows[3].Examples = 'Mini framework, worksheet, 3‑step method';
-      if(t.includes('ecommerce') || t.includes('shop')) rows[2].Examples = 'UGC try‑on, review, comparison';
-      if(t.includes('med spa')) rows[0].Examples = 'Treatment myths, skincare tip, provider intro';
-      if(t.includes('fitness')) rows[3].Examples = 'Form checklist, short workout, recovery tip';
-      if(t.includes('nonprofit')) rows[1].Examples = 'Poll on causes, volunteer Q&A prompt';
-      const ws = XLSX.utils.json_to_sheet(rows);
-      ws['!cols'] = [{ wch: 20 }, { wch: 22 }, { wch: 60 }];
-      return ws;
-    }
-
-    function buildKeywordsSheet(businessType, brand){
-      const type = (businessType||'General').toLowerCase().replace(/\\s+/g,' ').trim();
-      const primary = [`${type} marketing`, `${type} tips`, `${type} content ideas`, `${brand} ${type}`].filter(Boolean);
-      const ws = XLSX.utils.aoa_to_sheet([
-        ['Primary Keywords', ...primary],
-        ['Secondary Keywords', `${type} mistakes`, `${type} pricing`, `${type} near me`],
-        ['Hashtag Seeds', `#${type.replace(/\\W+/g,'')}`, '#contentmarketing', '#smallbusiness', '#leadgeneration']
-      ]);
-      ws['!cols'] = [{ wch: 20 }, { wch: 64 }];
-      return ws;
-    }
-
-    function buildAnalyticsSheet(){
-      const rows = Array.from({length:5},(_,i)=> ({
-        Day: i+1, Channel:'', Content:'', Impressions:'', Clicks:'', Likes:'', Comments:'', Shares:'', Saves:'', CTR:'', 'Engagement Rate':''
-      }));
-      const ws = XLSX.utils.json_to_sheet(rows);
-      for(let r=2;r<=6;r++){ ws[`J${r}`]={ f:`IFERROR(E${r}/D${r},0)` }; ws[`K${r}`]={ f:`IFERROR((F${r}+G${r}+H${r}+I${r})/D${r},0)` }; }
-      ws['!cols'] = [{ wch: 6 }, { wch: 12 }, { wch: 36 }, { wch: 12 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 16 }];
-      return ws;
-    }
-
-    function buildTrialChecklist(){
-      const aoa = [
-        ['Day','Task','Area','Owner','Status','Notes'],
-        ['Day 1','Set single outcome + CTA for the week','Strategy','','Not started',''],
-        ['Day 2','Draft 5 hooks + 2 CTAs','Creative','','Not started',''],
-        ['Day 3','Produce 2 core assets (video/carousel)','Production','','Not started',''],
-        ['Day 4','Schedule posts + set tracking','Operations','','Not started',''],
-        ['Day 5','Collect results + next‑step offer','Analytics','','Not started',''],
-      ];
-      const ws = XLSX.utils.aoa_to_sheet(aoa);
-      ws['!cols'] = [{ wch: 8 }, { wch: 48 }, { wch: 14 }, { wch: 14 }, { wch: 14 }, { wch: 36 }];
-      return ws;
-    }
-
-    document.getElementById('download').addEventListener('click', ()=>{
-      const brand = byId('brand').value.trim();
-      const goal = byId('goal').value.trim();
-      const business = byId('business').value.trim();
-      const fname = byId('file').value.trim() || '5Day_Trial_Marketing_Plan.xlsx';
-
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, buildPlanSheet(brand, goal, business), '5 Day Marketing Plan');
-      XLSX.utils.book_append_sheet(wb, buildContentMatrixSheet(business), 'Content Matrix');
-      XLSX.utils.book_append_sheet(wb, buildKeywordsSheet(business, brand), 'Keywords & Hashtags');
-      XLSX.utils.book_append_sheet(wb, buildAnalyticsSheet(), 'Analytics');
-      XLSX.utils.book_append_sheet(wb, buildTrialChecklist(), 'Trial Checklist');
-
-      XLSX.writeFile(wb, fname);
-    });
-  </script>
 </body>
 </html>
